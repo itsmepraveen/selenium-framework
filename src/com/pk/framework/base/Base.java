@@ -1,4 +1,12 @@
 package pk.framework.base;
 
-public class Base {
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+ public abstract class Base {
+
+     public Base(WebDriver driver) {
+         PageFactory.initElements(driver, this);
+     }
+
 }

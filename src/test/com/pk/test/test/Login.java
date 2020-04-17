@@ -1,5 +1,6 @@
 package com.pk.test.test;
 
+import com.pk.test.pages.HomePage;
 import com.pk.test.pages.LoginPage;
 import org.junit.After;
 import org.junit.Before;
@@ -17,21 +18,24 @@ public class Login {
 
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/src/com/pk/framework/resources/chromedriver");
         driver = new ChromeDriver();
-        driver.get("http://newtours.demoaut.com/mercurywelcome.php");
+        driver.get("http://eaapp.somee.com/");
     }
 
 
 
     @Test
-    public void loginTest() {
-        LoginPage login = new LoginPage(driver);
-        login.login("admin", "admin");
+    public void loginTest() throws InterruptedException {
+        HomePage home = new HomePage(driver);
+        home.gotoLogin();
 
-        System.out.println(System.getProperty("user.dir"));
+        Thread.sleep(2000);
+        LoginPage login = new LoginPage(driver);
+        login.login("admin", "password");
+
     }
 
     @After
     public void tearDown() {
-        driver.quit();
+       // driver.quit();
     }
 }
